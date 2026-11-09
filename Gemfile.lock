@@ -78,6 +78,8 @@ GEM
     addressable (2.9.2)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
+    autoprefixer-rails (10.6.1.0)
+      execjs (~> 2)
     base64 (0.3.0)
     bcrypt (3.1.22)
     bcrypt_pbkdf (1.1.2)
@@ -87,6 +89,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.26.1)
       msgpack (~> 1.5)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     brakeman (8.1.0)
       racc
     builder (3.3.0)
@@ -122,6 +127,8 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.2)
       tzinfo
+    execjs (2.10.2)
+      json (>= 2)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-aarch64-linux-musl)
     ffi (1.17.4-arm-linux-gnu)
@@ -284,6 +291,9 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.4.2)
+    rb-fsevent (0.11.2)
+    rb-inotify (0.11.1)
+      ffi (~> 1.0)
     rbs (4.2.0)
       logger
       prism (>= 1.6.0)
@@ -332,6 +342,11 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (3.7.0)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     securerandom (0.4.1)
     selenium-webdriver (4.52.0)
       base64 (~> 0.2)
@@ -418,6 +433,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bootstrap-sass (~> 3.3.5)
   brakeman
   bundler-audit
   capybara
