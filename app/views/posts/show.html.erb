@@ -1,2 +1,7 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= image_tag @posts.image.variant(resize_to_limit: [600, 600]) if @posts.image.attached? %>
+<br>
+<%= @posts.description %>
+<div class="link">
+  <%= link_to "Destroy", @posts, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_post_path(@posts) %>
+</div>
