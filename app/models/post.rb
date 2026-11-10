@@ -1,10 +1,16 @@
 class Post < ApplicationRecord
-has_attached_file  :image
-   styles: { large: "600x600>", medium: "300x300>", thumb: "150x150>" },
-   default_url: "/images/:style/missing.png
-   
-   validates_attachment_content_type  :image, content_type: /\Aimage\/.*\z/
-   
-   validates  :image, presence: true
-   validates  :description, presence: true, length: {minimum: 10}
+  belongs_to :user
+  has_one_attached :image
+
+  validates :image, presence: true
+  validates :description, presence: true, length: { minimum: 10 }
+  validate :image_must_be_an_image
+
+  private
+
+  def image_must_be_an_image
+    if image.attached? && !image.content_type.start_with?("image/")
+      errors.add(:image, "must be an image")
+    end
+  end
 end
