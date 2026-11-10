@@ -1,12 +1,17 @@
-<% @post.each do |x| %>
+<% @posts.each do |x| %>
   <div>
-    <%= image_tag x.image.variant(resize_to_limit: [300, 300]) if x.image.attached? %>
+    <% if x.image.attached? %>
+      <%= image_tag x.image, width: 300 %>
+    <% end %>
     <br>
     <%= x.description %>
     <div class="link">
-      <%= link_to "Destroy", x, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-      <%= link_to "Edit", edit_post_path(x) %>
-      <%= link_to "Show", x %>
+      <%= link_to "Show", post_path(x) %>
+      <% if x.user == current_user %>
+        <%= link_to "Edit", edit_post_path(x) %>
+        <%= button_to "Destroy", post_path(x), method: :delete,
+                      form: { data: { turbo_confirm: "Are you sure?" } } %>
+      <% end %>
     </div>
   </div>
 <% end %>

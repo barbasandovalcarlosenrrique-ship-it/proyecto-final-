@@ -1,0 +1,15 @@
+<h2>Edit Post</h2>
+<hr>
+<%= form_with model: @post do |f| %>
+  <% if @post.image.attached? %>
+    <%= image_tag @post.image, width: 300 %>
+    <br>
+  <% end %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.submit "Update Post" %>
+<% end %>

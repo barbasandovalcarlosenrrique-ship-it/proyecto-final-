@@ -1,7 +1,12 @@
-<%= image_tag @posts.image.variant(resize_to_limit: [600, 600]) if @posts.image.attached? %>
+<% if @post.image.attached? %>
+  <%= image_tag @post.image, width: 600 %>
+<% end %>
 <br>
-<%= @posts.description %>
+<%= @post.description %>
 <div class="link">
-  <%= link_to "Destroy", @posts, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  <%= link_to "Edit", edit_post_path(@posts) %>
-</div>
+  <% if @post.user == current_user %>
+    <%= link_to "Edit", edit_post_path(@post) %>
+    <%= button_to "Destroy", post_path(@post), method: :delete,
+                  form: { data: { turbo_confirm: "Are you sure?" } } %>
+  <% end %>
+</div> 
