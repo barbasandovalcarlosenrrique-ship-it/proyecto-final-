@@ -21,6 +21,15 @@ class PostsController < ApplicationController
       redirect_to new_post_path
     end
   end
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to posts_path
+      flash[:success] = "The post is destroy!"
+    else
+      redirect_to posts_path
+    end
+  end
 
   private
 
